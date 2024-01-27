@@ -6,6 +6,7 @@ dotenv.config();
 
 const app = express();
 app.use(morgan("dev"));
+app.use(express.json());
 
 // import routes
 import userRoutes from "./routes/user_route.js";
@@ -13,7 +14,7 @@ import authRouter from "./routes/auth_route.js";
 
 // use of routes
 app.use("/user", userRoutes);
-app.use("/auth", authRouter);
+app.use("/api/auth", authRouter);
 
 // DB Connect
 mongoose
