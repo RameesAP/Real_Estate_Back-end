@@ -16,6 +16,19 @@ import authRouter from "./routes/auth_route.js";
 app.use("/user", userRoutes);
 app.use("/api/auth", authRouter);
 
+
+//middleware
+
+app.use((error, req, res, next) => {
+  const statusCode = error.statusCode || 500;
+  const message = error.message || "internal server Error";
+  return res.status(statusCode).json({
+    success: false,
+    statusCode,
+    message,
+  });
+});
+
 // DB Connect
 mongoose
   .connect(process.env.MONGO)
