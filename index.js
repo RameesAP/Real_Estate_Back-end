@@ -2,20 +2,21 @@ import express from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
 import morgan from "morgan";
+import cookieParser from "cookie-parser";
 dotenv.config();
 
 const app = express();
 app.use(morgan("dev"));
 app.use(express.json());
+app.use(cookieParser());
 
 // import routes
 import userRoutes from "./routes/user_route.js";
 import authRouter from "./routes/auth_route.js";
 
 // use of routes
-app.use("/user", userRoutes);
+app.use("/api/user", userRoutes);
 app.use("/api/auth", authRouter);
-
 
 //middleware
 
