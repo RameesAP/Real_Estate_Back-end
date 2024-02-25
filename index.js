@@ -18,7 +18,7 @@ import listingRouter from "./routes/listing_route.js";
 // use of routes
 app.use("/api/user", userRoutes);
 app.use("/api/auth", authRouter);
-app.use("api/listing", listingRouter);
+app.use("/api/listing", listingRouter);
 
 //middleware
 
